@@ -325,16 +325,16 @@ export default function Home() {
 
                 <button
                   className={`mx-4 py-2 px-4 rounded-lg ${
-                    selectedBook === 'bible' ? 'bg-[#024082] text-white' : 'bg-white text-gray-800'
-                  } border border-gray-300 hover:border-[#024082] transition-colors`}
+                    selectedBook === 'bible' ? 'bg-[#3a8ee8] text-white' : 'bg-white text-gray-800'
+                  } border border-gray-300 hover:border-[#3a8ee8] transition-colors`}
                   onClick={() => handleBookClick('bible')}
                 >
                   Bible
                 </button>
                 <button
                   className={`mx-4 py-2 px-4 rounded-lg ${
-                    selectedBook === 'quran' ? 'bg-[#024082] text-white' : 'bg-white text-gray-800'
-                  } border border-gray-300 hover:border-[#024082] transition-colors`}
+                    selectedBook === 'quran' ? 'bg-[#3a8ee8] text-white' : 'bg-white text-gray-800'
+                  } border border-gray-300 hover:border-[#3a8ee8] transition-colors`}
                   onClick={() => handleBookClick('quran')}
                 >
                   Quran
