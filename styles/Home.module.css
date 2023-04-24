@@ -4,8 +4,9 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  background-color: #cdb4a0;
+  border-radius: 8px;
 }
-
 .header {
   width: auto;
 }
@@ -49,7 +50,7 @@
   position: absolute;
   top: 0.87rem;
   right: 1rem;
-  color: rgb(165, 162, 162);
+  color: #024082;
   background: none;
   padding: 0.3rem;
   border: none;

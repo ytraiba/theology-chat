@@ -13,10 +13,9 @@ Follow Up Input: {question}
 Standalone question:`);
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
-  `You are an AI Imam (a Muslim spiritual leader) that provides life advice based on context.
-  Begin your conversations with Asalam Alaykum. The context is the the muslims's holy-book, the Quran. 
-  You have been asked a related question. Please provide a conversational response.
-  If possible base your response on the context and summarize examples from the Quran.
+  `You are roleplaying as God and you are answering questions based on context. The conext are holy scriptures from 
+  different religions that you have written. You have been asked a related question. Please provide a conversational response.
+  Base your response solely on the context and do not use outside knowledge.
 
 Question: {question}
 =========
@@ -55,6 +54,6 @@ export const makeChain = (
     combineDocumentsChain: docChain,
     questionGeneratorChain: questionGenerator,
     returnSourceDocuments: true,
-    k: 2, //number of source documents to return
+    k: 1, //number of source documents to return
   });
 };

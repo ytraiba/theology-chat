@@ -16,6 +16,7 @@ import {
 
 export default function Home() {
   const [query, setQuery] = useState<string>('');
+  const [selectedBook, setSelectedBook] = useState<string>('bible');
   const [loading, setLoading] = useState<boolean>(false);
   const [sourceDocs, setSourceDocs] = useState<Document[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -27,13 +28,17 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Hi, what would you like to learn about Islam and the Quran?',
+        message: 'Ask God a Question:',
         type: 'apiMessage',
       },
     ],
     history: [],
     pendingSourceDocs: [],
   });
+
+  const handleBookClick = (bookNumber: string) => {
+    setSelectedBook(bookNumber);
+  };
 
   const { messages, pending, history, pendingSourceDocs } = messageState;
 
@@ -84,6 +89,7 @@ export default function Home() {
         body: JSON.stringify({
           question,
           history,
+          selectedBook,
         }),
         signal: ctrl.signal,
         onmessage: (event) => {
@@ -164,8 +170,8 @@ export default function Home() {
     <>
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
-          <h1 className="text-2xl font-bold leading-[1.1] tracking-tighter text-center">
-            Imam Chat - Chat with an Expert on the Quran
+          <h1 className="text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tighter text-center">
+            Chat With God &nbsp;🙏
           </h1>
           <main className={styles.main}>
             <div className={styles.cloud}>
@@ -176,10 +182,10 @@ export default function Home() {
                   if (message.type === 'apiMessage') {
                     icon = (
                       <Image
-                        src="/bot-image.png"
+                        src="/god.png"
                         alt="AI"
-                        width="40"
-                        height="40"
+                        width="50"
+                        height="50"
                         className={styles.boticon}
                         priority
                       />
@@ -233,7 +239,7 @@ export default function Home() {
                                       {doc.pageContent}
                                     </ReactMarkdown>
                                     <p className="mt-2">
-                                      <b>Source:</b> {doc.metadata.source}
+                                      <b>Source:</b> {doc.metadata.source.split('/')[5]}
                                     </p>
                                   </AccordionContent>
                                 </AccordionItem>
@@ -268,6 +274,7 @@ export default function Home() {
               </div>
             </div>
             <div className={styles.center}>
+              {/* Input Query */}
               <div className={styles.cloudform}>
                 <form onSubmit={handleSubmit}>
                   <textarea
@@ -308,7 +315,29 @@ export default function Home() {
                       </svg>
                     )}
                   </button>
+                  
                 </form>
+              </div>
+              {/* Switch between Context */}
+              <div className="flex justify-center items-center text-center pt-2 font-semibold">
+                <h1 className='text-md '>Switch Scriptures:</h1>
+
+                <button
+                  className={`mx-4 py-2 px-4 rounded-lg ${
+                    selectedBook === 'bible' ? 'bg-[#024082] text-white' : 'bg-white text-gray-800'
+                  } border border-gray-300 hover:border-[#024082] transition-colors`}
+                  onClick={() => handleBookClick('bible')}
+                >
+                  Bible
+                </button>
+                <button
+                  className={`mx-4 py-2 px-4 rounded-lg ${
+                    selectedBook === 'quran' ? 'bg-[#024082] text-white' : 'bg-white text-gray-800'
+                  } border border-gray-300 hover:border-[#024082] transition-colors`}
+                  onClick={() => handleBookClick('quran')}
+                >
+                  Quran
+                </button>
               </div>
             </div>
             {error && (

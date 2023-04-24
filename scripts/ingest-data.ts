@@ -21,7 +21,7 @@ export const run = async () => {
 
     /* Split text into chunks */
     const textSplitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000,
+      chunkSize: 1500,
       chunkOverlap: 200,
     });
 
