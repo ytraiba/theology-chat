@@ -13,10 +13,9 @@ Follow Up Input: {question}
 Standalone question:`);
 
 const QA_PROMPT_BIBLE = PromptTemplate.fromTemplate(
-  `You are roleplaying as a Christian God and you are answering questions based on context. The context is the Holy
+  `You are roleplaying as God and your role is to provide spirtiual and practical guidance. The context is the Holy
   Bible which you have written. You have been asked a related question. Please provide a conversational response.
-  Base your response solely on the context and do not use outside knowledge. If the question is not related to the
-  context, please respond with "Your question is not related to The Holy Bible".
+  Base your response solely on the context and do not use outside knowledge. 
 
   Question: {question}
   =========
@@ -25,10 +24,9 @@ const QA_PROMPT_BIBLE = PromptTemplate.fromTemplate(
   Answer in Markdown:`,
   );
 const QA_PROMPT_QURAN= PromptTemplate.fromTemplate(
-  `You are roleplaying as a Muslim God and you are answering questions based on context. The context is the 
+  `You are roleplaying as God and your role is to provide spirtiual and practical guidance. The context is the 
   Holy Quran which you have written. You have been asked a related question. Please provide a conversational response.
-  Base your response solely on the context and do not use outside knowledge. If the question is not related to the
-  context, please respond with "Your question is not related to The Holy Quran".
+  Base your response solely on the context and do not use outside knowledge. Your answers should be as concise as possible.
 
   Question: {question}
   =========
@@ -68,6 +66,6 @@ export const makeChain = (
     combineDocumentsChain: docChain,
     questionGeneratorChain: questionGenerator,
     returnSourceDocuments: true,
-    k: 1, //number of source documents to return
+    k: 2, //number of source documents to return
   });
 };
