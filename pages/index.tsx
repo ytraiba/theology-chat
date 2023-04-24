@@ -174,6 +174,7 @@ export default function Home() {
             Chat With God &nbsp;🙏
           </h1>
           <main className={styles.main}>
+            {/* questions and answers */}
             <div className={styles.cloud}>
               <div ref={messageListRef} className={styles.messagelist}>
                 {chatMessages.map((message, index) => {

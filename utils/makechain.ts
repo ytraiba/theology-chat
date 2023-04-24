@@ -12,26 +12,41 @@ Chat History:
 Follow Up Input: {question}
 Standalone question:`);
 
-const QA_PROMPT = PromptTemplate.fromTemplate(
-  `You are roleplaying as God and you are answering questions based on context. The conext are holy scriptures from 
-  different religions that you have written. You have been asked a related question. Please provide a conversational response.
-  Base your response solely on the context and do not use outside knowledge.
+const QA_PROMPT_BIBLE = PromptTemplate.fromTemplate(
+  `You are roleplaying as a Christian God and you are answering questions based on context. The context is the Holy
+  Bible which you have written. You have been asked a related question. Please provide a conversational response.
+  Base your response solely on the context and do not use outside knowledge. If the question is not related to the
+  context, please respond with "Your question is not related to The Holy Bible".
 
-Question: {question}
-=========
-{context}
-=========
-Answer in Markdown:`,
-);
+  Question: {question}
+  =========
+  {context}
+  =========
+  Answer in Markdown:`,
+  );
+const QA_PROMPT_QURAN= PromptTemplate.fromTemplate(
+  `You are roleplaying as a Muslim God and you are answering questions based on context. The context is the 
+  Holy Quran which you have written. You have been asked a related question. Please provide a conversational response.
+  Base your response solely on the context and do not use outside knowledge. If the question is not related to the
+  context, please respond with "Your question is not related to The Holy Quran".
+
+  Question: {question}
+  =========
+  {context}
+  =========
+  Answer in Markdown:`,
+  );
 
 export const makeChain = (
   vectorstore: PineconeStore,
+  selectedBook?: string,
   onTokenStream?: (token: string) => void,
-) => {
+  ) => {
   const questionGenerator = new LLMChain({
     llm: new OpenAIChat({ temperature: 0 }),
     prompt: CONDENSE_PROMPT,
   });
+  const QA_PROMPT = selectedBook === 'bible' ? QA_PROMPT_BIBLE : QA_PROMPT_QURAN;
   const docChain = loadQAChain(
     new OpenAIChat({
       temperature: 0,
@@ -48,7 +63,6 @@ export const makeChain = (
     }),
     { prompt: QA_PROMPT },
   );
-
   return new ChatVectorDBQAChain({
     vectorstore,
     combineDocumentsChain: docChain,

@@ -42,7 +42,7 @@ export default async function handler(
   sendData(JSON.stringify({ data: '' }));
 
   //create chain
-  const chain = makeChain(vectorStore, (token: string) => {
+  const chain = makeChain(vectorStore, selectedBook, (token: string) => {
     sendData(JSON.stringify({ data: token }));
   });
 
