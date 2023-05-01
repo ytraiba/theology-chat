@@ -15,4 +15,4 @@ I accomplished this by embedding both the Bible and the Quran into a Pinecone ve
 
 [Click here to "chat with god"](https://god-chat.herokuapp.com/).
 
-<img src="https://github.com/ytraiba/david-app/blob/master/src/assets/thumbnail2.png" alt="drawing" style="height:275px;"/>
+<img src="https://github.com/ytraiba/god-chat/blob/main/godChat.png" alt="drawing" style="height:275px;"/>
