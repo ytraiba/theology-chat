@@ -28,7 +28,7 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Ask God a Question:',
+        message: 'Ask Me A Question:',
         type: 'apiMessage',
       },
     ],
