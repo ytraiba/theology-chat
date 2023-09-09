@@ -171,7 +171,7 @@ export default function Home() {
       <Layout>
         <div className="mx-auto flex flex-col gap-4">
           <h1 className="text-2xl sm:text-3xl font-bold leading-[1.1] tracking-tighter text-center">
-            Chat With God &nbsp;🙏
+            Chat With A Religious Expert &nbsp;🙏
           </h1>
           <main className={styles.main}>
             {/* questions and answers */}
