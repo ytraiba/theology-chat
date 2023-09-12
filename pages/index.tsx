@@ -16,7 +16,7 @@ import {
 
 export default function Home() {
   const [query, setQuery] = useState<string>('');
-  const [selectedBook, setSelectedBook] = useState<string>('bible');
+  const [selectedBook, setSelectedBook] = useState<string>('quran');
   const [loading, setLoading] = useState<boolean>(false);
   const [sourceDocs, setSourceDocs] = useState<Document[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -322,15 +322,6 @@ export default function Home() {
               {/* Switch between Context */}
               <div className="flex justify-center items-center text-center pt-2 font-semibold">
                 <h1 className='text-md '>Switch Scriptures:</h1>
-
-                <button
-                  className={`mx-4 py-2 px-4 rounded-lg ${
-                    selectedBook === 'bible' ? 'bg-[#3a8ee8] text-white' : 'bg-white text-gray-800'
-                  } border border-gray-300 hover:border-[#3a8ee8] transition-colors`}
-                  onClick={() => handleBookClick('bible')}
-                >
-                  Bible
-                </button>
                 <button
                   className={`mx-4 py-2 px-4 rounded-lg ${
                     selectedBook === 'quran' ? 'bg-[#3a8ee8] text-white' : 'bg-white text-gray-800'
@@ -339,6 +330,15 @@ export default function Home() {
                 >
                   Quran
                 </button>
+                <button
+                  className={`mx-4 py-2 px-4 rounded-lg ${
+                    selectedBook === 'bible' ? 'bg-[#3a8ee8] text-white' : 'bg-white text-gray-800'
+                  } border border-gray-300 hover:border-[#3a8ee8] transition-colors`}
+                  onClick={() => handleBookClick('bible')}
+                >
+                  Bible
+                </button>
+                
               </div>
             </div>
             {error && (
